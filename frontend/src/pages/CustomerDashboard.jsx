@@ -13,7 +13,7 @@ export default function CustomerDashboard() {
   // Fetch transactions and update balance
   const fetchTransactions = async () => {
     try {
-      const res = await fetch(`http://localhost:5001/transactions/${userId}`);
+      const res = await fetch(`http://bank-backend-629s.onrender.com/transactions/${userId}`);
       const data = await res.json();
 
       if (data.success) {
@@ -46,7 +46,7 @@ export default function CustomerDashboard() {
     }
 
     try {
-      const res = await fetch(`http://localhost:5001/transactions/${type}`, {
+      const res = await fetch(`http://bank-backend-629s.onrender.com/transactions/${type}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId, amount: parseFloat(amount) })

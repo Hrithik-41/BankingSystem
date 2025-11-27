@@ -11,7 +11,7 @@ export default function CustomerLogin() {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5001/login/customer", {
+      const res = await fetch("http://bank-backend-629s.onrender.com/login/customer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password })

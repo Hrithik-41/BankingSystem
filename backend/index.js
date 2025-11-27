@@ -3,11 +3,12 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const crypto = require('crypto');
+const path = require('path');
 
-const port = 5001;
+const port = process.env.PORT || 5001;
 const app = express();
 
-app.use(cors());
+app.use(cors({origin: '*'}));
 app.use(bodyParser.json());
 app.use(express.json());
 
@@ -281,6 +282,11 @@ app.get('/balance/:username', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on port ${port}`);
 });

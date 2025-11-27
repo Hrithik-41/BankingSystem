@@ -9,7 +9,7 @@ export default function BankerDashboard() {
   // Fetch all customers
   const fetchCustomers = async () => {
     try {
-      const res = await fetch("http://localhost:5001/customers");
+      const res = await fetch("http://bank-backend-629s.onrender.com/customers");
       const data = await res.json();
       if (data.success) setCustomers(data.customers);
       else setMessage("Error fetching customers");
@@ -22,7 +22,7 @@ export default function BankerDashboard() {
   // Fetch transactions for a customer
   const fetchTransactions = async (userId) => {
     try {
-      const res = await fetch(`http://localhost:5001/transactions/${userId}`);
+      const res = await fetch(`http://bank-backend-629s.onrender.com/transactions/${userId}`);
       const data = await res.json();
       if (data.success) setTransactions(data.transactions);
       else setMessage("Error fetching transactions");
